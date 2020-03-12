@@ -1,12 +1,31 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://animacion/player.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Player.cs" type="Script" id=2]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 137, 193 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 137, 0, 137, 193 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=1]
 resource_name = "Estatico"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Player/AnimatedSprite:frame")
+tracks/0/path = NodePath("AnimatedSprite:frame")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -18,7 +37,7 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Player/Body:position")
+tracks/1/path = NodePath("Body:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -27,10 +46,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 5 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 4.25 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Player/Body:scale")
+tracks/2/path = NodePath("Body:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -41,37 +60,61 @@ tracks/2/keys = {
 "update": 1,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 0.95 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Right arm:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 15 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Left arm:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 15 ) ]
+}
 
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 137, 193 )
+[node name="Player" type="Node2D"]
+script = ExtResource( 2 )
 
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 137, 0, 137, 193 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )
+frame = 1
 
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
+[node name="Right arm" type="Polygon2D" parent="."]
+position = Vector2( -2.25002, -7.26261 )
+scale = Vector2( 1.0625, 0.489731 )
+z_index = -1
+offset = Vector2( 0, 15 )
+polygon = PoolVector2Array( 36, -7.63166, 43.567, -7.21255, 43.8166, 26.4721, 36.1111, 26.5708 )
 
-[node name="Player" type="AnimationPlayer"]
-anims/Estatico = SubResource( 4 )
+[node name="Left arm" type="Polygon2D" parent="."]
+position = Vector2( -82.3387, -8.17191 )
+scale = Vector2( 1.06452, 0.534375 )
+z_index = -1
+offset = Vector2( 0, 15 )
+polygon = PoolVector2Array( 36.1261, -5.76031, 43.8761, -6.22815, 44, 26.0525, 36.25, 26.0525 )
+
+[node name="Body" type="Polygon2D" parent="."]
+position = Vector2( 0, 4.25 )
+scale = Vector2( 1, 0.95 )
+z_index = -1
+polygon = PoolVector2Array( -20.1373, -75.0833, 20.1678, -75.0833, 36.25, -49.0312, 36.5, 35.0838, 29.25, 36.8939, 28.75, 85, 11.4428, 85.2715, 11.25, 43.7235, -11.5, 43.9735, -11.75, 85, -28.25, 84.75, -28.25, 37.6439, -37.3819, 35.8561, -37.7257, -12.0152, -37.557, -55.729 )
+
+[node name="Player" type="AnimationPlayer" parent="."]
+autoplay = "Estatico"
+anims/Estatico = SubResource( 1 )
 __meta__ = {
 "_editor_description_": ""
 }
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 3 )
-frame = 1
-
-[node name="Body" type="Polygon2D" parent="."]
-position = Vector2( 0, 5 )
-scale = Vector2( 1, 0.95 )
-z_index = -1
-polygon = PoolVector2Array( -18.5572, -74.6208, 20.4428, -74.6208, 45.4428, -73.6208, 42.4428, -14.747, 44.4428, 5.25295, 45.4428, 19.3792, 36.4428, 19.3792, 36.4428, 35.3792, 28.4428, 36.3792, 29.4428, 86.2715, 11.4428, 85.2715, 13.4428, 41.2715, -11.5572, 43.2715, -10.5572, 86.2715, -28.5572, 85.2715, -26.5572, 37.3792, -35.5572, 37.3792, -34.5572, 21.3792, -44.5572, 20.2715, -39.5572, -73.6208 )

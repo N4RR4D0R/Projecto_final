@@ -1,0 +1,6 @@
+/home/quique/Documentos/Projectos/Godot/Projecto_final/.mono/temp/obj/Tools/Projecto_final.csprojAssemblyReference.cache
+/home/quique/Documentos/Projectos/Godot/Projecto_final/.mono/temp/obj/Tools/Projecto_final.csproj.CoreCompileInputs.cache
+/home/quique/Documentos/Projectos/Godot/Projecto_final/.mono/temp/bin/Tools/Projecto_final.dll
+/home/quique/Documentos/Projectos/Godot/Projecto_final/.mono/temp/bin/Tools/Projecto_final.pdb
+/home/quique/Documentos/Projectos/Godot/Projecto_final/.mono/temp/obj/Tools/Projecto_final.dll
+/home/quique/Documentos/Projectos/Godot/Projecto_final/.mono/temp/obj/Tools/Projecto_final.pdb
