@@ -5,17 +5,18 @@ using System;
 public class Inventory : Godot.Object
 {
     const int maxItems=10;
-    private Array<Item> items= new Array<Item>();
+
+    private Array<Godot.Object> items;
 
     public Inventory():base(){}
 
-    public void setItem(Item item){
+    public void setItem(Godot.Object item){
         if(items.Count<maxItems){
             items.Add(item);
         }
     }
 
     public void useItem(int index,Player target){
-        items[index].use(target);
+        items[index].Call("use",target);
     }
 }
