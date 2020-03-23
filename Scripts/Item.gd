@@ -8,9 +8,10 @@ const Player=preload("res://Scripts/Player.cs");
 
 func _init(_uses):
 	uses=_uses
+	set_meta("type","item")
 
-func castTo(_target: Player):
-	pass
+func castTo(_target: Player)->float:
+	return 0.0
 
 func use(target: Player):
 	if(uses != 0):

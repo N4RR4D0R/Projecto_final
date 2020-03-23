@@ -3,26 +3,25 @@
 [ext_resource path="res://animacion/player.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.cs" type="Script" id=2]
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 137, 193 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 137, 0, 137, 193 )
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=1]
-resource_name = "Estatico"
+[sub_resource type="Animation" id=4]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:frame")
@@ -89,7 +88,7 @@ tracks/4/keys = {
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 4 )
+frames = SubResource( 3 )
 frame = 1
 
 [node name="Right arm" type="Polygon2D" parent="."]
@@ -114,7 +113,7 @@ polygon = PoolVector2Array( -20.1373, -75.0833, 20.1678, -75.0833, 36.25, -49.03
 
 [node name="Player" type="AnimationPlayer" parent="."]
 autoplay = "Estatico"
-anims/Estatico = SubResource( 1 )
+anims/Estatico = SubResource( 4 )
 __meta__ = {
 "_editor_description_": ""
 }
