@@ -2,16 +2,14 @@ extends Object
 
 var cooldown:int;
 
-const Player=preload("res://Scripts/Player.gd")
-
 func _init():
 	set_meta("type","ability");
 
-func castTo(_target: Player):
+func castTo(_target):
 	pass
 
-func use(target: Player):
-	if cooldown <=0:
+func use(target):
+	if cooldown <= 0:
 		cooldown=castTo(target);
 
 func update():
