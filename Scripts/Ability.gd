@@ -2,7 +2,7 @@ extends Object
 
 var cooldown:int;
 
-const Player=preload("res://Scripts/Player.cs")
+const Player=preload("res://Scripts/Player.gd")
 
 func _init():
 	set_meta("type","ability");

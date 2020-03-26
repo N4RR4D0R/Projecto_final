@@ -3,18 +3,20 @@ extends Object
 # Called when the node enters the scene tree for the first time.
 
 var uses:int;
+var ready:bool=false;
 
-const Player=preload("res://Scripts/Player.cs");
-
-func _init(_uses):
-	uses=_uses
+func _init():
 	set_meta("type","item")
 
-func castTo(_target: Player)->float:
-	return 0.0
+func setUses(_uses:int):
+	self.uses=_uses;
+	ready=true;
 
-func use(target: Player):
-	if(uses != 0):
+func castTo(_target)->void:
+	pass
+
+func use(target):
+	if(uses != 0 or not ready):
 		castTo(target);
 		if(uses > 0):
 			uses-=1;

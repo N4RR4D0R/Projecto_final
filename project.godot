@@ -13,20 +13,15 @@ _global_script_class_icons={
 
 }
 
+[Game]
+
+Max_items=5
+Max_abilities=4
+
 [application]
 
 config/name="Projecto_final"
-boot_splash/bg_color=Color( 0.466667, 0.466667, 0.466667, 1 )
 config/icon="res://icon.png"
-
-[global]
-
-Anti=false
-
-[logging]
-
-file_logging/enable_file_logging=true
-file_logging/log_path="user://game/log.txt"
 
 [rendering]
 
